@@ -44,7 +44,8 @@ A modern, real-time AI chatbot built with **Next.js 14**, **React 18**, **Tailwi
     Update `.env.local`:
     ```env
     OPENAI_API_KEY=your_openai_or_openrouter_api_key
-    WS_PORT=4000
+    OPENAI_BASE_URL=your_apen_ai_base_url
+    NEXT_PUBLIC_WS_URL=http://localhost:4000
     ```
 
 ## 🏃‍♂️ Running the Application

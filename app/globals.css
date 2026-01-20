@@ -7,6 +7,14 @@
   /* Slate 50 */
 }
 
+/* Light Mode Overrides */
+:root.light {
+  --background: #f8fafc;
+  /* Slate 50 */
+  --foreground: #0f172a;
+  /* Slate 900 */
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -53,6 +61,82 @@ body {
   border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+/* Markdown Styling */
+.markdown-content p {
+  margin-bottom: 0.75em;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-left: 1.25em;
+  margin-bottom: 0.75em;
+  list-style-type: disc;
+}
+
+.markdown-content pre {
+  background-color: #0f172a;
+  /* Slate 900 */
+  padding: 0.75em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin-bottom: 0.75em;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  /* Slate 400 with opacity */
+}
+
+.markdown-content code {
+  font-family: var(--font-mono);
+  background-color: rgba(15, 23, 42, 0.3);
+  padding: 0.1em 0.3em;
+  border-radius: 0.25em;
+  font-size: 0.9em;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.markdown-content a {
+  color: #60a5fa;
+  /* Blue 400 */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.markdown-content a:hover {
+  color: #93c5fd;
+  /* Blue 300 */
+}
+
+.markdown-content strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Light mode overrides for markdown */
+:root.light .markdown-content pre {
+  background-color: #f1f5f9;
+  /* Slate 100 */
+  border-color: #cbd5e1;
+  /* Slate 300 */
+}
+
+:root.light .markdown-content code {
+  background-color: rgba(241, 245, 249, 0.8);
+  /* Slate 100 */
+}
+
+:root.light .markdown-content a {
+  color: #2563eb;
+  /* Blue 600 */
+}
+
+:root.light .markdown-content strong {
+  color: #0f172a;
+  /* Slate 900 */
 }

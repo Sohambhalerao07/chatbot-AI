@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Real-Time AI Chatbot
 
-## Getting Started
+A modern, real-time AI chatbot built with **Next.js 14**, **React 18**, **Tailwind CSS**, and **Socket.io**. Features streaming AI responses, typing indicators, and a persistent chat history.
 
-First, run the development server:
+![Demo](https://via.placeholder.com/800x400?text=Real-Time+Chatbot+Demo)
+
+## 🚀 Features
+
+- **Real-Time Communication**: WebSocket connection for instant messaging.
+- **Streaming Responses**: AI responses are streamed token-by-token for a dynamic feel.
+- **Modern UI**: Polished interface with Tailwind CSS, including dark mode styling, glassmorphism, and smooth animations.
+- **State Management**: Handles connection states (connecting, connected, disconnected) and error handling.
+- **Responsive Design**: Fully optimized for mobile and desktop.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS
+- **Backend**: Node.js, Socket.io
+- **AI Integration**: OpenAI SDK (compatible with Deepseek, Claude, etc. via OpenRouter or direct API)
+
+## 📦 Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository_url>
+    cd realtime-ai-chatbot
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Environment Setup:**
+    Duplicate `.env.example` to `.env.local` and add your API credentials.
+    ```bash
+    cp .env.example .env.local
+    ```
+    
+    Update `.env.local`:
+    ```env
+    OPENAI_API_KEY=your_openai_or_openrouter_api_key
+    WS_PORT=4000
+    ```
+
+## 🏃‍♂️ Running the Application
+
+Start the development server (runs both Next.js frontend and Socket.io backend):
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend**: http://localhost:3000
+- **WebSocket Server**: http://localhost:4000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/
+│   ├── page.tsx           # Main chat page
+│   ├── layout.tsx         # Root layout
+│   └── globals.css        # Global styles & Tailwind directives
+├── components/
+│   ├── ChatInterface.tsx  # Main chat logic & UI container
+│   ├── MessageBubble.tsx  # Individual message styling
+│   ├── ChatInput.tsx      # Text input area
+│   └── ConnectionStatus.tsx # WebSocket status indicator
+├── server.js              # Custom Node.js WebSocket server
+├── .env.example           # Environment variables template
+└── package.json           # Dependencies & scripts
+```
 
-## Learn More
+## 🧠 Design Decisions
 
-To learn more about Next.js, take a look at the following resources:
+- **Socket.io**: Chosen for reliable real-time bidirectional communication. It handles reconnections automatically and is easier to set up than raw WebSockets.
+- **Concurrent Execution**: Used `concurrently` to run both the Next.js frontend and the Node.js backend with a single command for a better developer experience.
+- **Component Architecture**: 
+  - `ChatInterface` acts as the smart container managing state and sockets.
+  - `MessageBubble` and `ChatInput` are presentational components for better reusability and testing.
+- **Streaming**: Implemented server-side streaming using the OpenAI SDK's `stream: true` option, relaying chunks via `socket.emit('response-chunk')` to the client for immediate feedback.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⏱️ Time Spent
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Total development time: ~2 hours
+- Setup & Config: 20 mins
+- Backend WebSocket Logic: 40 mins
+- Frontend UI & Integration: 50 mins
+- Documentation & Polish: 10 mins
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Built as a hiring assignment submission.*
